@@ -23,7 +23,7 @@ let splitSong = [];
 // This will be the number of blanks we show based on the solution
 let numBlanks = 0;
 // Holds a mix of blank and solved letters (ex: 'n, _ _, n, _').
-let blanksAndSuccesses = [];
+let blanks = [];
 // Holds all of the wrong guesses
 let wrongGuesses = [];
 
@@ -33,27 +33,15 @@ let lossCounter = 0;
 let numGuesses = 9;
 
 
-
-// if (i !== -1) {
-//     underScr[i] = songs[i]
-// }
-
-
-
-// songs.forEach(function (e) {
-//     console.log(e)
-
-// })
-
 startGame = () => {
 
-    numGuesses = 9,
+    numGuesses = 9;
 
-        rdmSong = songs[Math.floor(Math.random() * songs.length)].toLocaleLowerCase();
+    rdmSong = songs[Math.floor(Math.random() * songs.length)];
 
     console.log(rdmSong)
 
-    splitSong = rdmSong.split('');
+    splitSong = rdmSong.toLocaleLowerCase().split('');
 
     console.log(splitSong)
 
@@ -61,18 +49,18 @@ startGame = () => {
     console.log(numBlanks)
 
     // CRITICAL LINE - Here we *reset* the guess and success array at each round.
-    blanksAndSuccesses = [];
+ blanks = [];
     // CRITICAL LINE - Here we *reset* the wrong guesses from the previous round.
     wrongGuesses = [];
 
     for (let i = 0; i < numBlanks; i++) {
-        blanksAndSuccesses.push("_")
+        blanks.push("_")
     }
 
-    console.log(blanksAndSuccesses)
+    console.log(blanks)
 
-    document.getElementById("noGuessesR").innerHTML = `<h3>` + numGuesses + `<h3>`;
-    document.getElementById("display").innerHTML = blanksAndSuccesses.join(" ");
+    document.getElementById("noGuessesR").innerHTML = `<h5>` + numGuesses + `<h5>`;
+    document.getElementById("display").innerHTML = blanks.join(" ");
     document.getElementById("guessedLetters").innerHTML = `<h5>` + wrongGuesses.join(" ") + `<h5>`;
 
 
@@ -83,17 +71,17 @@ letterCheck = (elem) => {
     let letterInWord = false;
 
     for (let i = 0; i < numBlanks; i++) {
-        if (rdmSong[i] === elem) {
+        if (splitSong[i] === elem) {
             letterInWord = true;
         }
     }
     if (letterInWord) {
         for (let j = 0; j < numBlanks; j++) {
-            if (rdmSong[j] === elem) {
-                blanksAndSuccesses[j] = elem
+            if (splitSong[j] === elem) {
+             blanks[j] = elem
             }
         }
-        console.log(blanksAndSuccesses)
+        console.log (blanks)
     }
     else {
         wrongGuesses.push(elem);
@@ -106,13 +94,13 @@ letterCheck = (elem) => {
 endOfRound = () => {
     console.log("WinCount: " + winCounter + "\nLossCount: " + lossCounter + "\nNo. of Guesses: " + numGuesses)
 
-    document.getElementById("noGuessesR").innerHTML = `<h3>` + numGuesses + `<h3>`;
-    document.getElementById("display").innerHTML = blanksAndSuccesses.join(" ");
+    document.getElementById("noGuessesR").innerHTML = `<h5>` + numGuesses + `<h5>`;
+    document.getElementById("display").innerHTML = blanks.join(" ");
     document.getElementById("guessedLetters").innerHTML = `<h5>` + wrongGuesses.join(" ") + `<h5>`;
 
-    if (splitSong.toString() === blanksAndSuccesses.toString()) {
+    if (splitSong.toString() === blanks.toString()) {
         winCounter++;
-        alert("Winner!");
+        alert(`Winner! Song Title: ${rdmSong}`);
 
         document.getElementById("winCount").innerHTML = winCounter;
         startGame()
@@ -128,7 +116,7 @@ endOfRound = () => {
 
 startGame();
 
-document.onkeyup = function(event) {
+document.onkeyup = function (event) {
     if (event.keyCode >= 65 && event.keyCode <= 90) {
         let guessedLetters = event.key.toLowerCase();
 
