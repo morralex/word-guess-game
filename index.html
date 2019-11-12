@@ -4,32 +4,64 @@
 <head>
     <meta charset="UTF-8">
     <title>Beatles Guessing Game</title>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="./assets/css/style.css">
-    <script src="./assets/javascript/game.js"></script>
 </head>
 
 <body>
-    <header class="title">
-        <h1>The Beatles</h1>
-        <h2>GUESS THE SONG!!!!</h2>
-    </header>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-2">
-                <h3>Wins</h3>
-                <h3>Losses</h3>
-            </div>
-            <div class="col-md-8">
-                <h3>Press any letter to start guessing!</h3>
-            </div>
-            <div class="col-md-2">
-                <h3>number of guesses remaining</h3>
-                <h3>guessed letters</h3>
+    <div class="main container">
+        <header class="title">
+            <h1>The Beatles</h1>
+            <h2>GUESS THE SONG!!!!</h2>
+        </header>
+        <div class="container">
+            <div class="col s12">
+                <div class="card-panel black">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <div class="row">
+                                <h3>Wins:</h3>
+                                <span id="winCount">
+
+                                </span>
+                            </div>
+                            <div class="row">
+                                <h3>Losses:</h3>
+                                <span id="lossCount">
+
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="row" id="go">
+                                <h3>Press any letter to start guessing!</h3>
+                            </div>
+                            <div class="row">
+                                <h4 id="display">Lets play</h4>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <h3>number of guesses remaining:</h3>
+                                <span id="noGuessesR">
+
+                                </span>
+                            </div>
+                            <div class="row">
+                                <h3>guessed letters:</h3>
+                                <div id="guessedLetters">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-
     </div>
-    
+
 </body>
+<script src="./assets/javascript/game.js"></script>
 
 </html>
