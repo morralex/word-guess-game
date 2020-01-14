@@ -1,4 +1,4 @@
-# word-guess-game
+# Word Guessing Game
 
 https://morralex.github.io/word-guess-game/
 
@@ -6,7 +6,7 @@ https://morralex.github.io/word-guess-game/
     
     * Once the page is rendered, a random song title will be generated
     * Start by pressing any key
-    * If succesful you add points to you game, vice versa you'll tally up losses
+    * If successful you add points to your score, vice versa you'll tally up losses
     * Can only be played w/ a keyboard
 
-### Have fun
+### Have fun!!
